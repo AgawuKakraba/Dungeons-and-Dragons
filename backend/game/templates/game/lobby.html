@@ -1,0 +1,22 @@
+{% extends "game/base.html" %}
+
+{% block title %}Lobby | Lorewyn{% endblock %}
+
+{% block content %}
+<div class="lobby-container">
+    <h2>🛡️ Game Lobby</h2>
+    <p>Choose an existing world or create a new one:</p>
+    <a class="btn" href="{% url 'game:create' %}">Create New World</a>
+    <h2>Available Worlds:</h2>
+    <ul class="session-list">
+        {% for s in sessions %}
+            <li>
+                <a class="btn" href="{% url 'game:session' s.id %}">{{ s.name }}</a>
+                {% if s.dm %} (DM: {{ s.dm.username }}){% endif %}
+            </li>
+        {% empty %}
+            <li>No gangs yet. Be the first to start one!</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

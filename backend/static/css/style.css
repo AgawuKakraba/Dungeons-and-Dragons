@@ -1,0 +1,205 @@
+/* Body and general font */
+body {
+    
+    background: url('/static/img/brickwall-bg.jpg') repeat fixed center;
+    color: #f5e1c0; /* lighter text so it stands out */
+    margin: 0;
+    padding: 0;
+    background-color: #2c1e14; /* fallback dark wood color */
+}
+
+/* Header/Footer with wood texture effect */
+header, footer {
+    background-color: rgba(60, 40, 20, 0.9);
+    padding: 15px 20px;
+    text-align: center;
+    color: #f5e1c0;
+    border-bottom: 2px solid #8b5a2b;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    font-family: 'MedievalSharp', serif;
+    font-size: 3em;
+    margin: 0;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px #000;
+}
+
+/* Navigation links */
+nav a {
+    color: #ffdca4;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* Main content area */
+main {
+    padding: 50px 20px;
+    min-height: 70vh;
+}
+
+/* Shared container */
+.container, .welcome-container, .lobby-container, .chat-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(20, 10, 0, 0.555); /* dark translucent overlay */
+    border: 2px solid #8b5a2b;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    color: #af781f;
+}
+
+.session-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color:  #8b812b; /* parchment-style */
+    padding: 30px;
+    border: 2px solid #8b5a2b;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    color: #3b2e2e;
+    font-family: 'Georgia', serif;
+}
+
+/* Form elements */
+input[type="text"], input[type="password"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #8b5a2b;
+    border-radius: 6px;
+    background: rgba(255, 250, 230, 0.1);
+    color: #f5e1c0bd;
+    font-size: 1em;
+}
+
+.messages {
+    margin-bottom: 20px;
+    max-height: 400px;   /* fixed chat window height */
+    overflow-y: auto;    /* scrolls only messages */
+    border: 1px solid #8b5a2b;
+    padding: 15px;
+    background-color: rgba(160, 145, 12, 0.5);
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.messages-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0;
+    text-align: center;
+}
+
+.dm-message {
+    color: #8b0000;
+    font-style: italic;
+    text-shadow: 1px 1px #000;
+    font-weight: bold;
+}
+
+.player-message {
+    color: #2f2f2f;
+    text-shadow: 1px 1px #000;
+    font-weight: medium;
+}
+
+/* Form at bottom */
+.message-form {
+    display: flex;
+    gap: 10px;
+}
+
+.message-form input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    font-size: 1em;
+    border: 2px solid #8b5a2b;
+    border-radius: 8px;
+    background-color: #aa8a086e;
+    color: #3b2e2e;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-form input[type="text"]:focus {
+    border-color: #a16f3a;
+    box-shadow: 0 0 8px rgba(161, 111, 58, 0.6);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 15px;
+    background-color: #8b5a2b;
+    color: #fff8dc;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+.btn:hover {
+    background-color: #a16f3a;
+    transform: scale(1.05);
+}
+
+/* Lantern decorative element */
+.lantern {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 60px;
+    height: 60px;
+    background: url('/static/img/lantern.jpg') no-repeat center;
+    background-size: contain;
+    pointer-events: none;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(255, 200, 100, 0.8));
+}
+
+/* Flash messages */
+.flash-message {
+    font-weight: bold;
+    text-align: center;
+    background: #fdf6e3 url('/static/img/parchment-bg.jpg') repeat center;
+    border: 2px solid #8b5a2b;
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin: 10px 0;
+    font-family: 'MedievalSharp', serif;
+    font-size: 1.1em;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    display: inline-block;
+    color: #3b2e2e;
+}
+
+.flash-message.success {
+    border-color: #3a7d44;
+    color: #2a4d2f;
+}
+
+.flash-message.error {
+    border-color: #7d2a2a;
+    color: #4d1f1f;
+}
+
+.flash-message.warning {
+    border-color: #d4a017;
+    color: #5c440e;
+}
+
+.flash-message.info {
+    border-color: #2a5a7d;
+    color: #1e3447;
+}

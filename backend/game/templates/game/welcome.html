@@ -1,0 +1,29 @@
+{% extends "game/base.html" %}
+
+{% block title %}Welcome | Lorewyn{% endblock %}
+
+{% block content %}
+<div class="welcome-container">
+    <div class="welcome-message">
+    {% if user.is_authenticated %}
+        <h2>Welcome back, {{ user.username }}! ⚔️</h2>
+        <p>
+            Your adventures await. You can <a href="{% url 'game:lobby' %}">join an existing quest</a> 
+            or <a href="{% url 'game:create' %}">create a new adventure</a> to leave your mark upon this world.
+        </p>
+        <p>Tip: Keep an eye on the chat, your companions may need your aid at any moment!</p>
+    {% else %}
+        <h2>Welcome, brave adventurer! 🌟</h2>
+        <p>
+            Step into the world of DungeonQuest. <a href="{% url 'login' %}">Login</a> or 
+            <a href="{% url 'signup' %}">sign up</a> to start your epic journey.
+        </p>
+        <p>Tip: Heroes always prepare before entering a quest — choose wisely!</p>
+    {% endif %}
+<hr>
+</div>
+
+    <a class="btn" href="{% url 'login' %}">Login</a>
+    <a class="btn" href="{% url 'signup' %}">Sign Up</a>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lorewyn{% endblock %}</title>
+
+    <!-- Medieval / fantasy font -->
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Lorewyn</h1>
+        <nav>
+            {% if request.user.is_authenticated %}
+                <span>Logged in as: "{{ request.user.username }}"</span>
+                <span><a href="{% url 'logout' %}">Logout</a></span>
+            {% else %}
+                <span><a href="{% url 'login' %}">Login</a></span>
+                <span><a href="{% url 'signup' %}">Sign Up</a></span>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+        {% block messages %}
+            {% if messages %}
+                <div class="messages-container">
+                    {% for message in messages %}
+                        <p class="flash-message {{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p><i>© 2025 Lorewyn</i></p>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+<audio autoplay loop>
+    <source src="{% static 'audio/dungeon_ambience.mp3' %}" type="audio/mpeg">
+</audio>
+
+</html>

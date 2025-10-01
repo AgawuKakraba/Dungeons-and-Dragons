@@ -1,0 +1,16 @@
+{% extends "game/base.html" %}
+{% load static %}
+
+{% block title %}Create Session | Lorewyn{% endblock %}
+
+{% block content %}
+<div class="session-container">
+    <h2>🛡️ Create a New World</h2>
+    <p>Enter a name for your new session:</p>
+    <form method="POST" class="message-form">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Session name" />
+        <button type="submit" class="btn">Create</button>
+    </form>
+</div>
+{% endblock %}

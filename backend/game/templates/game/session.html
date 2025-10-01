@@ -1,0 +1,26 @@
+{% extends "game/base.html" %}
+{% load static %}
+
+{% block title %}{{ game.name }} | Lorewyn{% endblock %}
+
+{% block content %}
+<div class="session-container">
+    <h2>🗡️ {{ game.name }}</h2>
+
+   <div class="messages">
+        {% for m in chat_messages %}
+            <p class="{% if m.is_dm %}dm-message{% else %}player-message{% endif %}">
+                <b>{% if m.is_dm %}DM: {% else %}{{ m.author.username }}: {% endif %}</b> {{ m.content }}
+            </p>
+        {% empty %}
+            <p>World seems to be uneventful...</p>
+        {% endfor %}
+    </div>
+
+    <form method="POST" action="{% url 'game:post_message' game.id %}" class="message-form">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="Type your action or narration..." />
+        <button type="submit" class="btn">Send</button>
+    </form>
+</div>
+{% endblock %}
