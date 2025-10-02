@@ -11,19 +11,15 @@
             Your adventures await. You can <a href="{% url 'game:lobby' %}">join an existing quest</a> 
             or <a href="{% url 'game:create' %}">create a new adventure</a> to leave your mark upon this world.
         </p>
+        <hr>
         <p>Tip: Keep an eye on the chat, your companions may need your aid at any moment!</p>
     {% else %}
-        <h2>Welcome, brave adventurer! 🌟</h2>
+        <h2>Welcome, brave adventurer!</h2>
         <p>
-            Step into the world of DungeonQuest. <a href="{% url 'login' %}">Login</a> or 
+            Step into the world of Lorewyn. <a href="{% url 'login' %}">Login</a> or 
             <a href="{% url 'signup' %}">sign up</a> to start your epic journey.
         </p>
-        <p>Tip: Heroes always prepare before entering a quest — choose wisely!</p>
+        <hr>
+        <p>Tip: Heroes always prepare before entering a quest, choose wisely!</p>
     {% endif %}
-<hr>
-</div>
-
-    <a class="btn" href="{% url 'login' %}">Login</a>
-    <a class="btn" href="{% url 'signup' %}">Sign Up</a>
-</div>
 {% endblock %}

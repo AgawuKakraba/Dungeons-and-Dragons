@@ -1,42 +1,42 @@
+/*  =========================
+    Medieval Fantasy Theme CSS
+    For Lorewyn 
+    ==========================  */
+
 /* Body and general font */
+html, body {
+    height: 100%;              
+    margin: 0;
+    display: flex;
+    flex-direction: column;    
+}
+
 body {
-    
     background: url('/static/img/brickwall-bg.jpg') repeat fixed center;
-    color: #f5e1c0; /* lighter text so it stands out */
+    color: #f5e1c0;
     margin: 0;
     padding: 0;
-    background-color: #2c1e14; /* fallback dark wood color */
+    background-color: #2c1e14;
     padding-bottom: 40px;
 }
 
-html, body {
-  height: 100%;              
-  margin: 0;
-  display: flex;
-  flex-direction: column;    
-}
-
 body > main {
-  flex: 1;
+    flex: 1;
 }
 
-.footer {
-    font-size: 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    background: #1a1a1ab9;
-    position: fixed; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%;
-    font-family: 'Cinzel Decorative', 'Uncial Antiqua', serif;
-    background-color: rgba(34, 34, 34, 0.85) !important;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    z-index: 1030;
+h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel Decorative', serif, bold;
+    color: #d4c3a3;
+    text-shadow: 1px 1px #000;
 }
 
-/* Header/Footer with wood texture effect */
+p, span, label, input, select, textarea {
+    font-family: 'Georgia', serif;
+    color: #f5e1c0;
+    line-height: 1.6;
+}
+
+/* Header */
 header {
     background-color: rgba(60, 40, 20, 0.9);
     text-align: center;
@@ -53,7 +53,7 @@ header h1 {
     text-shadow: 2px 2px #000;
 }
 
-/* Navigation links */
+/* ===== Navbar Base ===== */
 .fantasy-navbar {
     font-family: 'Cinzel Decorative', 'Uncial Antiqua', serif;
     background-color: rgba(34, 34, 34, 0.85) !important;
@@ -63,32 +63,46 @@ header h1 {
     z-index: 1030;
 }
 
-/* Logo */
 .fantasy-navbar .navbar-brand {
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-shadow: 1px 1px #ebc855dc;
-  color: #d4c3a3 !important;
-  transition: color 0.3s ease;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px #ebc855dc;
+    color: #d4c3a3 !important;
+    transition: color 0.3s ease;
 }
 
-/* Links */
+.fantasy-navbar .navbar-brand:hover {
+    color: #ffffff !important;
+}
+
+/* Navbar links */
 .fantasy-navbar .nav-link {
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  color: #d4c3a3 !important;
-  transition: color 0.3s ease;
+    color: #d4c3a3 !important;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
 }
 
-.fantasy-navbar .nav-link:hover,
-.fantasy-navbar .dropdown-item:hover {
-  background: rgba(139, 69, 19, 0.25);
-  border-radius: 6px;
-  text-shadow: 1px 1px #ecce47;
-  color: #ffffff !important;
+.fantasy-navbar .nav-link:hover {
+    background: rgba(139, 69, 19, 0.25);
+    border-radius: 6px;
+    text-shadow: 1px 1px #ecce47;
+    color: #ffffff !important;
 }
 
-/* Dropdown menu parchment */
+/* Separators between items */
+
+ .nav-item {
+    list-style: none;
+    float: left;
+}
+
+.nav-item + .nav-item  {
+    border-left: 0.5px solid;
+    color: #8b5a2b;
+}
+
+/* ===== Dropdown Menus ===== */
 .fantasy-navbar .dropdown-menu {
     background: #fdf6d8;
     border: 2px solid #4b2e05;
@@ -104,45 +118,71 @@ header h1 {
     padding: 8px 15px;
 }
 
-li {
-    list-style: none;
-    float: left;
+/* Dropdown items */
+.fantasy-navbar .dropdown-item {
+    color: #f5e1c0 !important;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
 }
 
-li + li {
-    border-left: 0.5px solid;
-    color: #8b5a2b;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
+.fantasy-navbar .dropdown-item:last-child {
+    border-bottom: none;
 }
 
 .fantasy-navbar .dropdown-item:hover {
-  color: #ffffff !important;
-  background-color: rgba(139, 69, 19, 0.25);
+    background-color: rgba(139, 69, 19, 0.3);
+    color: #ffffff !important;
+    border-radius: 6px;
+    text-shadow: 1px 1px #ecce47;
 }
 
-/* On mobile (collapsed navbar), dropdown takes full width */
+/* Mobile dropdown behavior */
 @media (max-width: 991px) {
-  .fantasy-navbar .dropdown-menu {
-    position: static;  /* removes float positioning */
-    float: none;
-    width: 100%;       /* spans the width of menu */
-    margin-top: 0;
-  }
+    .fantasy-navbar .dropdown-menu {
+        position: static;
+        float: none;
+        width: 100%;
+        margin-top: 0;
+    }
 }
 
+/* Desktop hover dropdown */
 @media (min-width: 992px) {
-  .fantasy-navbar .dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    .fantasy-navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
     }
+}
+
+/* ===== Footer ===== */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 2px solid rgba(139, 69, 19, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.8rem;
+    color: #cfc0a3;
+    padding: 5px 15px;
+    font-family: 'Cinzel Decorative', 'Uncial Antiqua', serif;
+    z-index: 1030;
+}
+
+.footer .user-info {
+    font-style: italic;
+    color: #e0c097;
+}
+
+.footer .copyright {
+    color: #a8a8a8;
 }
 
 /* Main content area */
@@ -254,6 +294,8 @@ input[type="text"], input[type="password"], input[type="email"], select, textare
     font-size: 1.2em;
     transition: all 0.3s ease;
     box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    cursor: pointer;
+    font-family: 'Cinzel Decorative', serif;
 }
 
 .btn:hover {

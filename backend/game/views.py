@@ -34,14 +34,19 @@ def session_view(request, session_id):
 def post_message(request, session_id):
     if request.method == 'POST':
         gs = get_object_or_404(GameSession, id=session_id)
-        content = request.POST.get('content', '').strip()
-        if content:
-            # Check if it's a dice roll
-            dice_match = re.match(r"!roll (\d+)d(\d+)", content)
+        raw_content = request.POST.get('content', '').strip()
+        
+        if raw_content:
+            # Default to showing what user typed
+            content = raw_content  
+
+            # Check if it's a dice roll command
+            dice_match = re.match(r"!roll (\d+)d(\d+)", raw_content)
             if dice_match:
                 n, sides = int(dice_match[1]), int(dice_match[2])
                 rolls = [random.randint(1, sides) for _ in range(n)]
-                content = f"{request.user.username} rolled {n}d{sides}: {rolls} (Total: {sum(rolls)})"
+                # Overwrite the content (no command text shown)
+                content = f"🎲 {request.user.username} rolled {n}d{sides}: {rolls} (Total: {sum(rolls)})"
 
             is_dm = (request.user == gs.dm)
             Message.objects.create(

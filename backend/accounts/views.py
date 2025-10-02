@@ -7,7 +7,7 @@ from django.contrib import messages
 # Signup view
 def signup_view(request):
     if request.user.is_authenticated:
-        messages.warning(request, "You are already signed in. Please use the login page to proceed.")
+        messages.warning(request, "You are already signed in.")
         return redirect("game:welcome")
     
     if request.method == "POST":
@@ -24,14 +24,14 @@ def signup_view(request):
 # Login view
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("game:lobby")
+        return redirect("game:welcome")
     
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("game:lobby")
+            return redirect("game:welcome")
     else:
         form = AuthenticationForm()
     return render(request, "accounts/login.html", {"form": form})
